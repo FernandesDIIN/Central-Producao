@@ -1,0 +1,11 @@
+Central de Produção 1.1.6 — geometria da marca baseada no script original
+
+Feche o Photoshop e copie os arquivos deste ZIP para a pasta instalada Central_Producao, preservando as subpastas. Substitua os arquivos existentes. Inclui os ajustes de código das versões 1.1.4 e 1.1.5. Preserve os ícones e o CSS já instalados.
+
+O original copia uma camada de pixels e calcula tamanho/posição pelos limites dessa camada. A extensão inseria um Objeto Inteligente; seus limites podem incluir a tela transparente do arquivo-fonte, sobretudo com Ignorar margens transparentes desligado. Validar esse retângulo não necessariamente valida a posição visual do logo.
+
+Agora a extensão rasteriza SOMENTE a instância recém-inserida, antes de medir/dimensionar/mover. O arquivo-fonte não é alterado. A marca resultante permanece em uma camada própria dentro do grupo, mas deixa de ser Objeto Inteligente. A opacidade escolhida é aplicada após medir e verificar a posição, evitando interferência de opacidade zero/baixa na leitura de transparência.
+
+Preservados: margem, porcentagem, posição vertical, políticas de substituição, verificações finais e restauração em caso de erro. Com camada rasterizada, mesmo a medição por bounds se refere aos pixels da camada; a opção de transparência mantém a medição alternativa pela seleção.
+
+Testes simulados de posição com canvas transparente maior que a arte: esquerda/centro/direita, com opção ligada/desligada, e ordem de rasterização/opacidade. Não executado no Photoshop. A diferença de implementação foi confirmada; o caso visual precisa ser validado com o logo real.

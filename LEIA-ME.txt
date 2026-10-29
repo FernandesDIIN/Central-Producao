@@ -1,0 +1,39 @@
+CENTRAL DE PRODUCAO 1.1.1 — PHOTOSHOP 2019+ / WINDOWS / CEP
+
+INSTALAR
+1. Extraia o ZIP inteiro.
+2. Feche o Photoshop.
+3. Execute Instalar.cmd.
+4. Abra o Photoshop e acesse Janela > Extensoes (herdadas) > Central de Producao.
+
+FERRAMENTAS
+- Marca d'agua 2.3 integrada: perfis Logo lateral/Banner grande/Personalizado, medicao pela arte visivel, margem, opacidade, posicao, aplicacao em uma ou todas as paginas e remocao dos grupos criados pela ferramenta.
+- Capas da Scan 1.0.3 integrada: capa inicial e/ou final, destino selecionavel, ajuste proporcional pela largura, ampliacao da tela sem cortar a pagina e uma etapa de Historico por pagina alterada.
+- Paginas: duplicar imagem-base, mesclar camadas desbloqueadas em uma camada chamada "redraw", salvar todas em PSD e exportar JPG/PNG/WebP.
+- Na aba Paginas, a pasta de destino e preenchida automaticamente com a pasta da pagina ativa; o botao Escolher continua permitindo trocar o destino manualmente.
+
+MESCLAR EM REDRAW
+- Processa todas as paginas abertas.
+- Camadas/grupos bloqueados sao preservados separadamente.
+- Camadas de raiz desbloqueadas sao mescladas e o resultado recebe o nome "redraw".
+- Se houver apenas uma camada desbloqueada, ela e renomeada para "redraw".
+- Em caso de erro na pagina, a extensao tenta restaurar o estado anterior daquela pagina.
+
+CAPAS DA SCAN
+- A pagina precisa ter uma copia de imagem desbloqueada; use "Duplicar imagem-base" antes quando necessario.
+- A capa inicial entra acima da pagina e a final abaixo.
+- As capas ficam em camadas proprias e os PSDs nao sao salvos automaticamente.
+
+WEBP
+Photoshop 23.2+ usa suporte nativo. Photoshop 2019/2021 requer WebPShop para exportacao WebP. JPG e PNG independem disso.
+
+SEGURANCA
+- A extensao restaura a pagina originalmente ativa ao terminar lotes.
+- Exportacao de imagens trabalha em copia temporaria e nao salva alteracoes nos PSDs originais.
+- Cancelar interrompe depois da pagina atual.
+- O instalador faz backup da versao anterior em %APPDATA%\CentralProducao\Backups.
+
+AJUSTE: RODA DO MOUSE
+Passe o cursor sobre um campo numérico e gire a roda, sem clicar. Tamanhos: 0,5 por passo. Demais campos: 1 por passo, respeitando limites e campos desativados.
+Base 1.1.1 preservada: host, manifesto, HTML, CSS e inicialização. Apenas panel.js recebeu o tratamento da roda.
+Instalador com uma única assinatura UTF-8.

@@ -1,0 +1,29 @@
+CENTRAL DE PRODUÇÃO 1.1.4 — revisão do ZIP Central_Producao_1.1.2 enviado
+
+INSTALAÇÃO DO PATCH
+Feche o Photoshop. Abra a pasta instalada da extensão (normalmente %APPDATA%\Adobe\CEP\extensions\Central_Producao). Extraia o conteúdo deste ZIP dentro dela, substituindo panel.js, index.html, jsx/host.jsx e CSXS/manifest.xml. Preserve os demais arquivos, principalmente style.css e icons. Abra novamente o Photoshop.
+Este é um patch manual, não um instalador completo. Não execute o instalador antigo após aplicar o patch, pois ele recolocaria os arquivos antigos.
+
+PROBLEMAS ENCONTRADOS E CORRIGIDOS
+- Incompatibilidade de versões: panel.js exigia 1.1.1, enquanto host, HTML e manifesto usavam 1.1.3, apesar do nome 1.1.2 do ZIP. Isso gerava o aviso persistente para reiniciar. Agora todos usam 1.1.4.
+- A abertura do painel alterava uma qualidade WebP salva entre 0 e 12 para 85. Agora ela é preservada. A troca de formato continua adaptando os limites.
+- O relatório dizia que a página original havia sido restaurada mesmo quando o host retornava restauração=0. Agora confere o valor real.
+- Ao ocorrer falha fatal, o painel liberava os controles antes de terminar a restauração no Photoshop. Agora aguarda essa resposta e conserva o relatório das páginas já processadas.
+- Lotes com erros por página eram anunciados apenas como concluídos. Agora a mensagem final informa a quantidade de erros.
+- Mesclar desbloqueadas não considerava o bloqueio de pixels transparentes. Agora esse bloqueio também protege a camada e seu grupo ancestral.
+- Marcas antigas no grupo "marca" eram reconhecidas para remoção, mas não para as políticas de pular/substituir. A identificação foi unificada.
+- Valores inválidos/fracionários de posição, escopo e política da marca agora são rejeitados pelo host.
+- Capas duplicavam conteúdo entre documentos dentro de suspendHistory. Removido esse envolvimento, seguindo o fluxo direto compatível com a correção já validada no PS 2021 em outro projeto. A reversão por página em caso de falha permanece; a operação pode gerar MAIS DE UMA etapa de histórico.
+
+COMPORTAMENTOS CONFERIDOS / LIMITES MANTIDOS
+- Caminhos de marca e capas ficam nas preferências; a pasta de Páginas continua sendo obtida da página ativa.
+- Roda do mouse continua alterando campos numéricos sem focá-los.
+- Exportar trabalha numa cópia temporária; salvar PSD salva o documento de trabalho com camadas e perfil.
+- Capas ainda exigem página RGB de 8/16 bits e cópia de imagem desbloqueada; PSDs de capa são preparados a partir de uma cópia achatada.
+- Mesclar desbloqueadas abrange TODAS as camadas de raiz elegíveis, inclusive textos e grupos: não é uma operação exclusiva para camadas de imagem. Camadas ocultas, máscaras e modos de mistura exigem conferência visual após a mesclagem.
+- WebP no PS 2021 continua usando o caminho WebPShop existente; nenhuma dependência foi instalada ou modificada.
+- Ícones existentes foram preservados; este patch não os substitui.
+
+TESTES
+Sintaxe JS/JSX; coerência de versões; bloqueios de transparência/grupos; políticas de marcas e enumerações inválidas; preferência WebP; encerramento assíncrono em erro; capas com sucesso/falha simulada e fechamento das cópias temporárias.
+Não houve execução real no Photoshop/Windows nem validação visual de capas, marcas ou arquivos exportados. Não é uma garantia de ausência de todos os bugs. Teste primeiro uma página duplicada e confira o relatório do lote.

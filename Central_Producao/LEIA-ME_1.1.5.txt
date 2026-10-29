@@ -1,0 +1,16 @@
+Central de Produção 1.1.5 — prevenção de deslocamento da marca
+
+Feche o Photoshop. Extraia este patch dentro da pasta instalada Central_Producao, substituindo os arquivos nas subpastas correspondentes. Preserve style.css e icons. Reabra o Photoshop.
+Inclui os ajustes de código da 1.1.4. Não é um instalador completo.
+
+- Ativa explicitamente o documento antes de inserir a marca.
+- Recusa alinhamento horizontal inválido.
+- Libera máscara de corte herdada na marca quando identificada; define visibilidade, preenchimento e mistura normal.
+- Confere a posição com as dimensões atuais após dimensionar e mover.
+- Confere novamente após inserir ambas as laterais e remover grupos antigos.
+- Tenta corrigir deslocamentos; se a posição não puder ser confirmada, informa o erro e usa a restauração da página já existente.
+- Confere se a marca cabe dentro das margens, com tolerância de 1,5 px para arredondamento do Photoshop.
+
+A margem continua com o valor escolhido. A opção Ignorar margens transparentes continua sendo respeitada: desligada, o alinhamento considera os limites completos, não somente a arte visível.
+
+Testes simulados: nove combinações de alinhamento/posição vertical, liberação de máscara de corte, movimento recusado, limites excedidos e sintaxe. Não executado no Photoshop. A causa exata do caso antigo não foi reproduzida; estas são proteções adicionais, não uma confirmação daquela causa.
